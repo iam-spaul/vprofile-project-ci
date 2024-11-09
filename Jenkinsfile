@@ -51,12 +51,12 @@ pipeline {
             }
             agent any
             steps {
-                dir("/home/azureuser/") {
-                    unstash "vp"
+                sh 'cd /home/azureuser/apache-tomcat-9.0.96/webapps'
+                    
                 }
-                dir("/apache-tomcat-9.0.96/bin") {
-                    sh './startup.sh'
-                }
+                // dir("/apache-tomcat-9.0.96/bin") {
+                //     sh './startup.sh'
+                // }
             }
         }
     }
