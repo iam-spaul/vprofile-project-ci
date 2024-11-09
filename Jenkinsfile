@@ -5,7 +5,7 @@ tools {
   maven 'mymvn'
 }
   parameters {
-  choice choices: ['dev', 'prod'], name: 'select_enviroment'
+  choice choices: ['dev', 'prod'], name: 'select_environment'
 }
 
 stages {
