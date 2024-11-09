@@ -52,8 +52,8 @@ pipeline {
             agent any
             steps {
                 sh 'cd /home/azureuser/apache-tomcat-9.0.96/webapps'
-                    
-                }
+                sh  'ls -lrt'
+                
                 // dir("/apache-tomcat-9.0.96/bin") {
                 //     sh './startup.sh'
                 // }
