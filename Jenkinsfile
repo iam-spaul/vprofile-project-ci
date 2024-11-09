@@ -42,7 +42,7 @@ pipeline {
 }
 
      
-//   }
+  }
 
  stage('deploy_Dev') {
     when {
