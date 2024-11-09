@@ -57,7 +57,7 @@ pipeline {
             if (dirExists) {
                 dir('/home/azureuser/tomcatserver/webapps') {
                     unstash 'vp'
-                    sh 'rm -R ROOT'
+                  
                 }
                 sh 'cd /home/azureuser/tomcatserver/bin'
                 sh './startup.sh'
