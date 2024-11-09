@@ -54,12 +54,12 @@ stages {
     // }
     agent any
     steps{
-      dir("/home/azureuser/apache-tomcat-9.0.96/webapps"){
+      dir("/apache-tomcat-9.0.96/webapps"){
          unstash "main-file"
         
       }
 
-      dir("/home/azureuser/apache-tomcat-9.0.96/bin"){
+      dir("/apache-tomcat-9.0.96/bin"){
         sh './startup.sh'
       }
       
