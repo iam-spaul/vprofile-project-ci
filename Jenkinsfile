@@ -57,7 +57,7 @@ pipeline {
             if (dirExists) {
                 dir('/home/azureuser/tomcatserver/webapps') {
                     unstash 'vp'
-                    sh 'rm ROOT'
+                    sh 'rm -R ROOT'
                 }
             } else {
                 error("Directory does not exist: /home/azureuser/tomcatserver/webapps")
