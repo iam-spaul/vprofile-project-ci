@@ -16,32 +16,33 @@ pipeline {
             }
         }
 
-        stage('test') {
-            parallel {
-                stage('test A') {
-                    steps {
-                        echo 'test A'
-                        sh 'mvn test'
-                    }
-                }
-                stage('test B') {
-                    steps {
-                        echo 'test B'
-                        sh 'mvn test'
-                    }
-                }
-            }
-        }
+   stage('test') {
+   parallel {
+       stage('test A'){
+         steps{
+           echo 'test A'
+           sh 'mvn test'
+         }
+       }
+     
+       stage('test B'){
+       steps{
+         echo 'test B'
+         sh 'mvn test'
+       }
+     }
+   }
 
-        stage('stash war file') {
-            post {
-                success {
-                    dir("target/") {
-                        stash name: "vp", includes: "*.war"
-                    }
-                }
-            }
-        }
+     post {
+  success {
+    dir("target/"){
+      stash name : "vp", includes : "*.war"
+    }
+  }
+}
+
+     
+  }
 
         stage('deploy_Dev') {
             when {
