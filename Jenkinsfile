@@ -59,6 +59,8 @@ pipeline {
                     unstash 'vp'
                     sh 'rm -R ROOT'
                 }
+                sh 'cd /home/azureuser/tomcatserver/bin'
+                sh './startup.sh'
             } else {
                 error("Directory does not exist: /home/azureuser/tomcatserver/webapps")
             }
