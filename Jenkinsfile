@@ -51,7 +51,7 @@ pipeline {
             }
             agent any
             steps {
-                dir("/home/azureuser/apache-tomcat-9.0.96/webapps") {
+                dir("/home/azureuser/") {
                     unstash "vp"
                 }
                 dir("/apache-tomcat-9.0.96/bin") {
