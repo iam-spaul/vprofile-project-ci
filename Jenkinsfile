@@ -44,20 +44,23 @@ pipeline {
      
   }
 
-        stage('deploy_Dev') {
-            when {
-                beforeAgent true
-                expression { params.select_environment == 'dev' }
-            }
-            agent any
-            steps {
-                sh 'cd /home/azureuser/apache-tomcat-9.0.96/webapps'
-                sh  'ls -lrt'
-                
-                // dir("/apache-tomcat-9.0.96/bin") {
-                //     sh './startup.sh'
-                // }
+       stage('deploy_Dev') {
+    when {
+        beforeAgent true
+        expression { params.select_environment == 'dev' }
+    }
+    agent any
+    steps {
+        script {
+            def dirExists = fileExists('/home/azureuser/apache-tomcat-9.0.96/webapps')
+            if (dirExists) {
+                sh 'cd /home/azureuser/apache-tomcat-9.0.96/webapps && echo "Changed directory to webapps"'
+            } else {
+                error("Directory does not exist: /home/azureuser/apache-tomcat-9.0.96/webapps")
             }
         }
+    }
+}
+
     }
 }
