@@ -44,7 +44,7 @@ pipeline {
      
   }
 
-       stage('deploy_Dev') {
+ stage('deploy_Dev') {
     when {
         beforeAgent true
         expression { params.select_environment == 'dev' }
@@ -52,15 +52,19 @@ pipeline {
     agent any
     steps {
         script {
-            def dirExists = fileExists('/tomcatserver/webapps')
+            sh 'pwd && ls -la /home/azureuser/tomcatserver/webapps'
+            def dirExists = fileExists('/home/azureuser/tomcatserver/webapps')
             if (dirExists) {
-                sh 'cd /tomcatserver/webapps && echo "Changed directory to webapps"'
+                dir('/home/azureuser/tomcatserver/webapps') {
+                    sh 'echo "Changed directory to webapps and running commands here."'
+                }
             } else {
-                error("Directory does not exist: /home/azureuser/apache-tomcat-9.0.96/webapps")
+                error("Directory does not exist: /home/azureuser/tomcatserver/webapps")
             }
         }
     }
 }
+
 
     }
 }
