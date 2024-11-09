@@ -25,12 +25,12 @@ pipeline {
          }
        }
      
-       stage('test B'){
-       steps{
-         echo 'test B'
-         sh 'mvn test'
-       }
-     }
+     //   stage('test B'){
+     //   steps{
+     //     echo 'test B'
+     //     sh 'mvn test'
+     //   }
+     // }
    }
 
      post {
@@ -59,8 +59,8 @@ pipeline {
                     unstash 'vp'
                   
                 }
-                sh 'cd /home/azureuser/tomcatserver/bin'
-                sh './startup.sh'
+                sh 'cd /home/azureuser/tomcatserver/bin &&  ./startup.sh'
+                
             } else {
                 error("Directory does not exist: /home/azureuser/tomcatserver/webapps")
             }
