@@ -35,7 +35,7 @@ stages {
      post {
   success {
     dir("target/"){
-      stash name : "main-file", includes : "*.war"
+      stash name : "vp", includes : "*.war"
     }
   }
 }
@@ -55,7 +55,7 @@ stages {
     agent any
     steps{
       dir("/apache-tomcat-9.0.96/webapps"){
-         unstash "main-file"
+         unstash "vp"
         
       }
 
