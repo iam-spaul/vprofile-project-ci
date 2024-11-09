@@ -54,7 +54,7 @@ pipeline {
         script {
             def dirExists = fileExists('/tomcatserver/webapps')
             if (dirExists) {
-                sh 'cd /apache-tomcat-9.0.96/webapps && echo "Changed directory to webapps"'
+                sh 'cd /tomcatserver/webapps && echo "Changed directory to webapps"'
             } else {
                 error("Directory does not exist: /home/azureuser/apache-tomcat-9.0.96/webapps")
             }
