@@ -52,7 +52,7 @@ pipeline {
     agent any
     steps {
         script {
-            def dirExists = fileExists('/home/azureuser/apache-tomcat-9.0.96/webapps')
+            def dirExists = fileExists('/tomcatserver/webapps')
             if (dirExists) {
                 sh 'cd /apache-tomcat-9.0.96/webapps && echo "Changed directory to webapps"'
             } else {
