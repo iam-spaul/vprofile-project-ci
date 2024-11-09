@@ -34,7 +34,6 @@ pipeline {
         }
 
         stage('stash war file') {
-            when { branch 'main' }
             post {
                 success {
                     dir("target/") {
@@ -51,7 +50,7 @@ pipeline {
             }
             agent any
             steps {
-                dir("target/deploy") {
+                dir("/apache-tomcat-9.0.96/webapps") {
                     unstash "vp"
                 }
                 dir("/apache-tomcat-9.0.96/bin") {
