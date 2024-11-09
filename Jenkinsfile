@@ -44,15 +44,25 @@ stages {
   }
 
 
-  // stage('deploy_Dev'){
-  //   when { expression {params.select_enviroment=='dev'}  beforeAgent true }
-  //   agent {
-  //     lebel 'DevServer'
-  //   }
-  //   steps{
-  //     dir 
-  //   }
-  // }
+  stage('deploy_Dev'){
+    when { expression {params.select_enviroment=='dev'}  beforeAgent true }
+    // agent {
+    //   lebel 'DevServer'
+    // }
+    agent any
+    steps{
+      dir("/home/azureuser/apache-tomcat-9.0.96/webapps"){
+         unstash "main-file"
+        
+      }
+
+      dir("/home/azureuser/apache-tomcat-9.0.96/bin"){
+        sh './startup.sh'
+      }
+      
+      
+    }
+  }
 
 
 }
