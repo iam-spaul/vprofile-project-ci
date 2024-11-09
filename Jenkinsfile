@@ -45,7 +45,10 @@ stages {
 
 
   stage('deploy_Dev'){
-    when { expression {params.select_enviroment=='dev'}  beforeAgent true }
+   when { 
+                beforeAgent true
+                expression { params.select_environment == 'dev' }
+        }
     // agent {
     //   lebel 'DevServer'
     // }
