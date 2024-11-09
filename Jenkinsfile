@@ -66,7 +66,7 @@ pipeline {
 // }
         stage('dev'){
             steps{
-                sh 'sudo ls -la /home/azureuser/tomcatserver/webapps'
+                sh 'ls -la /home/azureuser/tomcatserver/webapps'
 
             }
         }
