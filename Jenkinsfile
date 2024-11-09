@@ -54,8 +54,10 @@ stages {
     // }
     agent any
     steps{
-      dir("/apache-tomcat-9.0.96/webapps/")
-         unstash "vp"
+      dir("/apache-tomcat-9.0.96/webapps/"){
+          unstash "vp"
+      }
+       
         
       
 
