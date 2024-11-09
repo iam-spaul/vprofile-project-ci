@@ -36,7 +36,7 @@ pipeline {
      post {
   success {
     dir("target/"){
-      stash name : "vp", includes : "*.war"
+      stash name : "ROOT.war", includes : "*.war"
     }
   }
 }
@@ -52,14 +52,15 @@ pipeline {
     agent any
     steps {
         script {
-            sh 'pwd && ls -la /home/azureuser/tomcatserver/webapps'
-            def dirExists = fileExists('/home/azureuser/tomcatserver/webapps')
+            sh 'pwd && ls -la /var/lib/tomcat10/webapps'
+            def dirExists = fileExists('/var/lib/tomcat10/webapps')
             if (dirExists) {
-                dir('/home/azureuser/tomcatserver/webapps') {
-                    unstash 'vp'
+                dir('/var/lib/tomcat10/webapps') {
+                    sh 'rm -r ROOT'
+                    unstash 'ROOT.war'
                   
                 }
-                sh 'cd /home/azureuser/tomcatserver/bin &&  ./startup.sh'
+                // sh 'cd /home/azureuser/tomcatserver/bin &&  ./startup.sh'
                 
             } else {
                 error("Directory does not exist: /home/azureuser/tomcatserver/webapps")
